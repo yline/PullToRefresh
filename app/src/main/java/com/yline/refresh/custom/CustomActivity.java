@@ -13,7 +13,6 @@ import com.yline.refresh.R;
 import com.yline.test.StrConstant;
 import com.yline.view.recycler.test.SimpleRecyclerAdapter;
 import com.yline.view.refresh.PullToRefreshLayout;
-import com.yline.view.refresh.ViewStatus;
 import com.yline.view.refresh.callback.OnRefreshListener;
 
 public class CustomActivity extends BaseAppCompatActivity {

@@ -14,7 +14,6 @@ import com.yline.test.StrConstant;
 import com.yline.view.recycler.test.SimpleRecyclerAdapter;
 import com.yline.view.refresh.callback.OnRefreshListener;
 import com.yline.view.refresh.PullToRefreshLayout;
-import com.yline.view.refresh.ViewStatus;
 
 public class RecyclerViewActivity extends BaseAppCompatActivity {
 	public static void launch(Context context) {
@@ -42,6 +41,8 @@ public class RecyclerViewActivity extends BaseAppCompatActivity {
 	
 	private void initView() {
 		mRefreshLayout = findViewById(R.id.recycler_refresh);
+		mRefreshLayout.setRefreshMove(false); // 下拉刷新不移动
+		mRefreshLayout.setLoadMoreMove(false); // 上拉加载不移动
 		
 		mRecyclerAdapter = new SimpleRecyclerAdapter();
 		RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -58,6 +59,8 @@ public class RecyclerViewActivity extends BaseAppCompatActivity {
 				new Handler().postDelayed(new Runnable() {
 					@Override
 					public void run() {
+						int size = StrConstant.getIntRandom(20);
+						mRecyclerAdapter.setDataList(StrConstant.getListEnglish(size), true);
 						mRefreshLayout.finishRefresh();
 					}
 				}, 2000);
@@ -76,25 +79,6 @@ public class RecyclerViewActivity extends BaseAppCompatActivity {
 	}
 	
 	private void initData() {
-		// mRecyclerAdapter.setDataList(StrConstant.getListFive(20), true);
-		
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				mRefreshLayout.showView(ViewStatus.LOADING_STATUS);
-				new Handler().postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						mRefreshLayout.showView(ViewStatus.EMPTY_STATUS);
-						new Handler().postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								mRefreshLayout.showView(ViewStatus.ERROR_STATUS);
-							}
-						}, 2000);
-					}
-				}, 2000);
-			}
-		}, 2000);
+		mRecyclerAdapter.setDataList(StrConstant.getListFive(20), true);
 	}
 }

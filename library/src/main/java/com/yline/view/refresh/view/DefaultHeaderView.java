@@ -1,6 +1,7 @@
 package com.yline.view.refresh.view;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,30 +18,30 @@ import com.yline.view.refresh.callback.OnHeaderCallback;
  *
  * @author yline 2018/9/5 -- 15:04
  */
-public class HeaderView extends FrameLayout implements OnHeaderCallback {
-	private TextView tv;
-	private ImageView arrow;
+public class DefaultHeaderView extends FrameLayout implements OnHeaderCallback {
+	private TextView textView;
+	private ImageView arrowImageView;
 	private ProgressBar progressBar;
 	
-	public HeaderView(Context context) {
+	public DefaultHeaderView(Context context) {
 		this(context, null);
 	}
 	
-	public HeaderView(Context context, AttributeSet attrs) {
+	public DefaultHeaderView(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
 	}
 	
-	public HeaderView(Context context, AttributeSet attrs, int defStyleAttr) {
+	public DefaultHeaderView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		init(context);
+		
+		LayoutInflater.from(context).inflate(R.layout.layout_default_header, this, true);
+		initView();
 	}
 	
-	private void init(Context context) {
-		View view = LayoutInflater.from(context).inflate(R.layout.layout_header, null);
-		addView(view);
-		tv = (TextView) view.findViewById(R.id.header_tv);
-		arrow = (ImageView) view.findViewById(R.id.header_arrow);
-		progressBar = (ProgressBar) view.findViewById(R.id.header_progress);
+	private void initView() {
+		textView = findViewById(R.id.header_text);
+		arrowImageView = findViewById(R.id.header_arrow);
+		progressBar = findViewById(R.id.header_progress);
 	}
 	
 	@Override
@@ -52,14 +53,14 @@ public class HeaderView extends FrameLayout implements OnHeaderCallback {
 	public void progress(float progress, float all) {
 		float s = progress / all;
 		if (s >= 0.9f) {
-			arrow.setRotation(180);
+			arrowImageView.setRotation(180);
 		} else {
-			arrow.setRotation(0);
+			arrowImageView.setRotation(0);
 		}
 		if (progress >= all - 10) {
-			tv.setText("松开刷新");
+			textView.setText("松开刷新");
 		} else {
-			tv.setText("下拉加载");
+			textView.setText("下拉加载");
 		}
 	}
 	
@@ -70,16 +71,16 @@ public class HeaderView extends FrameLayout implements OnHeaderCallback {
 	
 	@Override
 	public void loading() {
-		arrow.setVisibility(GONE);
+		arrowImageView.setVisibility(GONE);
 		progressBar.setVisibility(VISIBLE);
-		tv.setText("刷新中...");
+		textView.setText("刷新中...");
 	}
 	
 	@Override
 	public void normal() {
-		arrow.setVisibility(VISIBLE);
+		arrowImageView.setVisibility(VISIBLE);
 		progressBar.setVisibility(GONE);
-		tv.setText("下拉刷新");
+		textView.setText("下拉刷新");
 	}
 	
 	@Override
