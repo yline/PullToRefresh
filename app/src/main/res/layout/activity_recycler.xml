@@ -3,16 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.yline.view.refresh.PullToRefreshLayout
-        android:id="@+id/list_refresh"
+    <com.yline.refresh.custom.NormalPullToRefreshLayout
+        android:id="@+id/recycler_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/list_view"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </com.yline.view.refresh.PullToRefreshLayout>
+    </com.yline.refresh.custom.NormalPullToRefreshLayout>
 </RelativeLayout>
-
-

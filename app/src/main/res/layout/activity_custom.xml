@@ -4,15 +4,13 @@
     android:layout_height="match_parent">
 
     <com.yline.view.refresh.PullToRefreshLayout
-        android:id="@+id/list_refresh"
+        android:id="@+id/custom_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/list_view"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/custom_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.yline.view.refresh.PullToRefreshLayout>
 </RelativeLayout>
-
-
