@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.yline.view.R;
+import com.yline.view.refresh.R;
 import com.yline.view.refresh.callback.OnFooterCallback;
 
 /**

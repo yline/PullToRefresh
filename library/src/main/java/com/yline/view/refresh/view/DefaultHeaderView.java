@@ -1,7 +1,6 @@
 package com.yline.view.refresh.view;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.yline.view.R;
+import com.yline.view.refresh.R;
 import com.yline.view.refresh.callback.OnHeaderCallback;
 
 /**

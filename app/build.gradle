@@ -20,12 +20,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 
     implementation 'com.yline.lib:LibSDK:2.3.2'
     implementation 'com.yline.lib:LibViewRecycler:1.3.0'
 
-    compile project(':library')
+    implementation project(':library')
 }
