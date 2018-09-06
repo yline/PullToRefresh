@@ -42,7 +42,7 @@ ext {
     siteUrl = 'https://github.com/yline/as_lib_view_refresh'
     gitUrl = 'https://github.com/yline/as_lib_view_refresh.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.2'
 
     developerId = 'yline'
     developerName = 'yline'
