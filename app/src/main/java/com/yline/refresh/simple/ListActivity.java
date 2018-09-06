@@ -11,6 +11,7 @@ import com.yline.base.BaseAppCompatActivity;
 import com.yline.refresh.R;
 import com.yline.test.StrConstant;
 import com.yline.view.recycler.test.SimpleListAdapter;
+import com.yline.view.refresh.callback.OnLoadMoreListener;
 import com.yline.view.refresh.callback.OnRefreshListener;
 import com.yline.view.refresh.PullToRefreshLayout;
 
@@ -50,7 +51,7 @@ public class ListActivity extends BaseAppCompatActivity {
 	}
 	
 	private void initViewClick() {
-		mRefreshLayout.setRefreshListener(new OnRefreshListener() {
+		mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void refresh() {
 				new Handler().postDelayed(new Runnable() {
@@ -63,7 +64,8 @@ public class ListActivity extends BaseAppCompatActivity {
 					}
 				}, 2000);
 			}
-			
+		});
+		mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
 			@Override
 			public void loadMore() {
 				new Handler().postDelayed(new Runnable() {

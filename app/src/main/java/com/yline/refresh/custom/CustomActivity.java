@@ -13,6 +13,7 @@ import com.yline.refresh.R;
 import com.yline.test.StrConstant;
 import com.yline.view.recycler.test.SimpleRecyclerAdapter;
 import com.yline.view.refresh.PullToRefreshLayout;
+import com.yline.view.refresh.callback.OnLoadMoreListener;
 import com.yline.view.refresh.callback.OnRefreshListener;
 
 public class CustomActivity extends BaseAppCompatActivity {
@@ -52,7 +53,7 @@ public class CustomActivity extends BaseAppCompatActivity {
 	}
 	
 	private void initViewClick() {
-		mRefreshLayout.setRefreshListener(new OnRefreshListener() {
+		mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void refresh() {
 				new Handler().postDelayed(new Runnable() {
@@ -64,7 +65,8 @@ public class CustomActivity extends BaseAppCompatActivity {
 					}
 				}, 2000);
 			}
-			
+		});
+		mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
 			@Override
 			public void loadMore() {
 				new Handler().postDelayed(new Runnable() {

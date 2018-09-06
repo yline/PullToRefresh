@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
+import com.yline.view.refresh.callback.OnLoadMoreListener;
 import com.yline.view.refresh.callback.OnRefreshListener;
 import com.yline.view.refresh.callback.OnFooterCallback;
 import com.yline.view.refresh.callback.OnHeaderCallback;
@@ -58,9 +58,14 @@ public class PullToRefreshLayout extends FrameLayout {
 	private final int mTouchSlope;
 	
 	private OnRefreshListener refreshListener;
+	private OnLoadMoreListener loadMoreListener;
 	
-	public void setRefreshListener(OnRefreshListener refreshListener) {
+	public void setOnRefreshListener(OnRefreshListener refreshListener) {
 		this.refreshListener = refreshListener;
+	}
+	
+	public void setOnLoadMoreListener(OnLoadMoreListener listener){
+		this.loadMoreListener = listener;
 	}
 	
 	public PullToRefreshLayout(Context context) {
@@ -211,8 +216,8 @@ public class PullToRefreshLayout extends FrameLayout {
 								@Override
 								public void onSuccess() {
 									isLoadMore = true;
-									if (refreshListener != null) {
-										refreshListener.loadMore();
+									if (loadMoreListener != null) {
+										loadMoreListener.loadMore();
 									}
 									mOnFooterCallback.loading();
 								}

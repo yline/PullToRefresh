@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.yline.base.BaseAppCompatActivity;
 import com.yline.refresh.R;
+import com.yline.view.refresh.callback.OnLoadMoreListener;
 import com.yline.view.refresh.callback.OnRefreshListener;
 import com.yline.view.refresh.PullToRefreshLayout;
 
@@ -39,7 +40,7 @@ public class ScrollViewActivity extends BaseAppCompatActivity {
 	}
 	
 	private void initViewClick() {
-		mRefreshLayout.setRefreshListener(new OnRefreshListener() {
+		mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void refresh() {
 				new Handler().postDelayed(new Runnable() {
@@ -49,7 +50,8 @@ public class ScrollViewActivity extends BaseAppCompatActivity {
 					}
 				}, 2000);
 			}
-			
+		});
+		mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
 			@Override
 			public void loadMore() {
 				new Handler().postDelayed(new Runnable() {
